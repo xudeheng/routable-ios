@@ -228,6 +228,9 @@
 }
 
 - (void)map:(NSString *)format toController:(Class)controllerClass withOptions:(UPRouterOptions *)options {
+  if (!controllerClass) {
+    return;
+  }
   if (!format) {
     @throw [NSException exceptionWithName:@"RouteNotProvided"
                                    reason:@"Route #format is not initialized"
