@@ -321,6 +321,8 @@ typedef void (^RouterOpenCallback)(NSDictionary *params);
 - (void)openExternal:(NSString *)url;
 
 - (void)openUrl:(NSString *)url;
+- (void)openUrl:(NSString *)url animated:(BOOL)animated;
+- (void)openUrl:(NSString *)url animated:(BOOL)animated extraParams:(NSDictionary *)extraParams;
 
 /**
  Triggers the appropriate functionality for a mapped URL, such as an anonymous function or opening a `UIViewController`. `UIViewController` transitions will be animated;

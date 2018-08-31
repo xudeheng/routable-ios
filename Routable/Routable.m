@@ -251,23 +251,7 @@
 
 - (void)openUrl:(NSString *)url
 {
-    NSArray *schemes = @[@"http", @"https", @"tel"];
-    NSURL *URL = [NSURL URLWithString:url];
-    NSString *scheme = [URL scheme];
-    CGFloat osver = [[[UIDevice currentDevice] systemVersion] floatValue];
-    
-    if([self.scheme isEqualToString:[URL scheme]]) {
-        [self open:url];
-    }else {
-        //System will proceed acceptable schemes
-        if (osver < 10.0) {
-            [[UIApplication sharedApplication] openURL:URL];
-        }else {
-            [[UIApplication sharedApplication] openURL:URL options:nil completionHandler:^(BOOL success) {
-                
-            }];
-        }
-    }
+    [self openUrl:url animated:YES extraParams:nil];
 }
 
 - (void)openUrl:(NSString *)url animated:(BOOL)animated {
@@ -288,12 +272,16 @@
     }else {
         //System will proceed acceptable schemes
         if (osver < 10.0) {
-            [[UIApplication sharedApplication] openURL:URL];
+            if (![[UIApplication sharedApplication] openURL:URL]) {
+                [self open:url animated:animated extraParams:extraParams];
+            }
         }else {
             NSURL *newURL = URL.parameterString ? [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@", URL.scheme, URL.path]] : URL;
             
             [[UIApplication sharedApplication] openURL:newURL options:extraParams completionHandler:^(BOOL success) {
-                
+                if (!success) {
+                    [self open:url animated:animated extraParams:extraParams];
+                }
             }];
         }
     }
