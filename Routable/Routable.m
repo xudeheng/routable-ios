@@ -201,6 +201,7 @@
   if ((self = [super init])) {
     self.routes = [NSMutableDictionary dictionary];
     self.cachedRoutes = [NSMutableDictionary dictionary];
+      self.scheme = @"router";
   }
   return self;
 }
@@ -246,6 +247,56 @@
 
 - (void)openExternal:(NSString *)url {
   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+}
+
+- (void)openUrl:(NSString *)url
+{
+    NSArray *schemes = @[@"http", @"https", @"tel"];
+    NSURL *URL = [NSURL URLWithString:url];
+    NSString *scheme = [URL scheme];
+    CGFloat osver = [[[UIDevice currentDevice] systemVersion] floatValue];
+    
+    if([self.scheme isEqualToString:[URL scheme]]) {
+        [self open:url];
+    }else {
+        //System will proceed acceptable schemes
+        if (osver < 10.0) {
+            [[UIApplication sharedApplication] openURL:URL];
+        }else {
+            [[UIApplication sharedApplication] openURL:URL options:nil completionHandler:^(BOOL success) {
+                
+            }];
+        }
+    }
+}
+
+- (void)openUrl:(NSString *)url animated:(BOOL)animated {
+    [self openUrl:url animated:animated extraParams:nil];
+}
+
+- (void)openUrl:(NSString *)url
+    animated:(BOOL)animated
+ extraParams:(NSDictionary *)extraParams
+{
+    NSURL *URL = [NSURL URLWithString:url];
+    
+    NSString *scheme = [URL scheme];
+    CGFloat osver = [[[UIDevice currentDevice] systemVersion] floatValue];
+    
+    if([self.scheme isEqualToString:[URL scheme]]) {
+        [self open:url animated:animated extraParams:extraParams];
+    }else {
+        //System will proceed acceptable schemes
+        if (osver < 10.0) {
+            [[UIApplication sharedApplication] openURL:URL];
+        }else {
+            NSURL *newURL = URL.parameterString ? [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@", URL.scheme, URL.path]] : URL;
+            
+            [[UIApplication sharedApplication] openURL:newURL options:extraParams completionHandler:^(BOOL success) {
+                
+            }];
+        }
+    }
 }
 
 - (void)open:(NSString *)url {

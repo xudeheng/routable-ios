@@ -241,6 +241,12 @@ typedef void (^RouterOpenCallback)(NSDictionary *params);
  */
 @interface UPRouter : NSObject
 
+
+/**
+ Default :"router://"
+ */
+@property (strong, nonatomic) NSString *scheme;
+
 ///-------------------------------
 /// @name Navigation Controller
 ///-------------------------------
@@ -313,6 +319,8 @@ typedef void (^RouterOpenCallback)(NSDictionary *params);
  @param url The URL the OS will open (i.e. "http://google.com")
  */
 - (void)openExternal:(NSString *)url;
+
+- (void)openUrl:(NSString *)url;
 
 /**
  Triggers the appropriate functionality for a mapped URL, such as an anonymous function or opening a `UIViewController`. `UIViewController` transitions will be animated;

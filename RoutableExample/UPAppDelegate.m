@@ -35,7 +35,8 @@
 }
 
 - (void)tapped:(id)sender {
-  [[Routable sharedRouter] open:@"modal"];
+  //[[Routable sharedRouter] open:@"modal"];
+    [[Routable sharedRouter] openUrl:@"https://www.baidu.com"];
 }
 
 @end
@@ -77,7 +78,7 @@
 }
 
 - (void)tappedUser:(id)sender {
-  [[Routable sharedRouter] open:@"user"];
+    [[Routable sharedRouter] open:@"user" animated:YES extraParams:@{}];
 }
 
 @end

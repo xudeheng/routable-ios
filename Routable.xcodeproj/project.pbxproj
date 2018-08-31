@@ -208,6 +208,14 @@
 				LastTestingUpgradeCheck = 0630;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "TurboProp Inc";
+				TargetAttributes = {
+					F86EF9C3170C3C7B00EB726A = {
+						DevelopmentTeam = 375GT6S3QN;
+					};
+					F86EF9E3170C3C7B00EB726A = {
+						DevelopmentTeam = 375GT6S3QN;
+					};
+				};
 			};
 			buildConfigurationList = F86EF9BF170C3C7B00EB726A /* Build configuration list for PBXProject "Routable" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -366,10 +374,12 @@
 		F86EF9F7170C3C7B00EB726A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 375GT6S3QN;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RoutableExample/Routable-Prefix.pch";
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				INFOPLIST_FILE = "RoutableExample/Routable-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -378,10 +388,12 @@
 		F86EF9F8170C3C7B00EB726A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 375GT6S3QN;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RoutableExample/Routable-Prefix.pch";
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				INFOPLIST_FILE = "RoutableExample/Routable-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -391,6 +403,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Routable.app/Routable";
+				DEVELOPMENT_TEAM = 375GT6S3QN;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
@@ -409,6 +422,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Routable.app/Routable";
+				DEVELOPMENT_TEAM = 375GT6S3QN;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
